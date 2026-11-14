@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="fitnesss.Views.RiwayatTransaksiWindow"
+        x:CompileBindings="False"
+        Title="Riwayat Transaksi Hari Ini - Lontar Gym"
+        Width="820" Height="520"
+        WindowStartupLocation="CenterOwner"
+        Background="#F8FAFC">
+
+    <Grid RowDefinitions="Auto, *, Auto" Margin="16">
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="🕒 Daftar Transaksi Hari Ini" FontSize="16" FontWeight="Bold" Foreground="#0F172A"/>
+            <TextBlock Text="Pilih transaksi dari tabel untuk mencetak ulang bukti transaksi (struk)" FontSize="12" Foreground="#64748B"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" x:Name="DgTodayTransactions" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Trx ID" Binding="{Binding Id}" Width="70"/>
+                <DataGridTextColumn Header="Waktu" Binding="{Binding CreatedAt, StringFormat='{}{0:HH:mm}'}" Width="80"/>
+                <DataGridTextColumn Header="Pelanggan" Binding="{Binding NamaPelanggan}" Width="150"/>
+                <DataGridTextColumn Header="No. Unik" Binding="{Binding NomorUnik}" Width="100"/>
+                <DataGridTextColumn Header="Layanan / Produk" Binding="{Binding NamaProduk}" Width="*"/>
+                <DataGridTextColumn Header="Bayar (Rp)" Binding="{Binding UangBayar, StringFormat='Rp {0:N0}'}" Width="110"/>
+                <DataGridTextColumn Header="Kembali (Rp)" Binding="{Binding UangKembali, StringFormat='Rp {0:N0}'}" Width="110"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,12,0,0">
+            <Button Content="🖨️ Cetak Ulang Struk Terpilih" Click="BtnCetakUlang_Click" Background="#2563EB" Foreground="White" FontWeight="Bold" Height="36" Padding="14,0" CornerRadius="6"/>
+            <Button Content="Tutup" Click="BtnTutup_Click" Background="#64748B" Foreground="White" FontWeight="SemiBold" Height="36" Padding="14,0" CornerRadius="6"/>
+        </StackPanel>
+    </Grid>
+</Window>

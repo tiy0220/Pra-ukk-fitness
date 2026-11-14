@@ -1,0 +1,90 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="fitnesss.Views.StrukWindow"
+        x:CompileBindings="False"
+        Title="Bukti Transaksi - Lontar Gym"
+        Width="440" Height="620"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        Background="#F1F5F9">
+    
+    <Grid RowDefinitions="*, Auto" Margin="16">
+        <!-- Receipt Paper Area -->
+        <Border Grid.Row="0" Background="White" CornerRadius="8" BoxShadow="0 4 12 0 #20000000" Padding="20">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="8">
+                    <!-- Header -->
+                    <TextBlock Text="LONTAR GYM" FontSize="20" FontWeight="ExtraBold" HorizontalAlignment="Center" Foreground="#0F172A"/>
+                    <TextBlock Text="Fitness Center &amp; Health Club" FontSize="11" Foreground="#64748B" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Jl. Raya Lontar No. 123 (Offline System)" FontSize="10" Foreground="#94A3B8" HorizontalAlignment="Center"/>
+                    
+                    <Separator Margin="0,4" Background="#E2E8F0"/>
+
+                    <!-- Meta Info -->
+                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto" Margin="0,2">
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="No. Transaksi:" FontSize="11" Foreground="#64748B"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TxtNoTrx" Text="#TRX-001" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Tanggal / Jam:" FontSize="11" Foreground="#64748B" Margin="0,2,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TxtTglTrx" Text="2026-11-14 14:00" FontSize="11" HorizontalAlignment="Right" Margin="0,2,0,0"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Kasir:" FontSize="11" Foreground="#64748B" Margin="0,2,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TxtKasir" Text="Kasir 1" FontSize="11" HorizontalAlignment="Right" Margin="0,2,0,0"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Pelanggan:" FontSize="11" Foreground="#64748B" Margin="0,2,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="TxtPelanggan" Text="Budi Santoso (M001)" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right" Margin="0,2,0,0"/>
+                    </Grid>
+
+                    <Separator Margin="0,4" Background="#E2E8F0"/>
+
+                    <!-- Items Header -->
+                    <Grid ColumnDefinitions="*, Auto" Margin="0,2">
+                        <TextBlock Grid.Column="0" Text="ITEM / LAYANAN" FontSize="11" FontWeight="Bold" Foreground="#475569"/>
+                        <TextBlock Grid.Column="1" Text="TOTAL" FontSize="11" FontWeight="Bold" Foreground="#475569"/>
+                    </Grid>
+
+                    <!-- Items List -->
+                    <ItemsControl x:Name="IcReceiptItems">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*, Auto" Margin="0,3">
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="{Binding ProductName}" FontSize="12" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding Note}" FontSize="10" Foreground="#10B981" FontWeight="Medium" IsVisible="{Binding IsFreeMemberBenefit}"/>
+                                        <TextBlock Text="{Binding Qty, StringFormat='{}Jumlah: {0}x'}" FontSize="10" Foreground="#64748B"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1" Text="{Binding Subtotal, StringFormat='Rp {0:N0}'}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Separator Margin="0,6" Background="#E2E8F0"/>
+
+                    <!-- Payment Summary -->
+                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto" Margin="0,2">
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Total Tagihan:" FontSize="12" FontWeight="Bold" Foreground="#0F172A"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TxtTotalTagihan" Text="Rp 0" FontSize="14" FontWeight="ExtraBold" HorizontalAlignment="Right" Foreground="#0F172A"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Uang Bayar (Tunai):" FontSize="11" Foreground="#64748B" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TxtUangBayar" Text="Rp 0" FontSize="11" HorizontalAlignment="Right" Margin="0,4,0,0"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Uang Kembali:" FontSize="11" FontWeight="SemiBold" Foreground="#16A34A" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TxtUangKembali" Text="Rp 0" FontSize="12" FontWeight="Bold" HorizontalAlignment="Right" Foreground="#16A34A" Margin="0,4,0,0"/>
+                    </Grid>
+
+                    <Separator Margin="0,8,0,4" Background="#E2E8F0"/>
+
+                    <TextBlock Text="Terima Kasih Atas Kunjungan Anda!" FontSize="11" FontWeight="Medium" Foreground="#64748B" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Sehat &amp; Bugar Bersama Lontar Gym" FontSize="10" Foreground="#94A3B8" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Bottom Action Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,12,0,0">
+            <Button Content="🖨️ Cetak Struk" Click="BtnPrint_Click" Background="#2563EB" Foreground="White" FontWeight="SemiBold" Padding="16,8" CornerRadius="6"/>
+            <Button Content="Tutup" Click="BtnClose_Click" Background="#94A3B8" Foreground="White" FontWeight="SemiBold" Padding="16,8" CornerRadius="6"/>
+        </StackPanel>
+    </Grid>
+</Window>

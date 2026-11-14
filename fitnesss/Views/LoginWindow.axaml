@@ -1,0 +1,64 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="fitnesss.Views.LoginWindow"
+        Title="Login - Lontar Gym"
+        Width="460" Height="560"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Background="#0F172A">
+    
+    <Grid>
+        <Border Margin="24" Background="#1E293B" CornerRadius="12" BoxShadow="0 10 25 0 #40000000" Padding="32">
+            <StackPanel Spacing="16" VerticalAlignment="Center">
+                <!-- Branding Header -->
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                    <TextBlock Text="🏋️ LONTAR GYM" FontSize="26" FontWeight="ExtraBold" Foreground="#38BDF8" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Fitness Center Management System" FontSize="12" Foreground="#94A3B8" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Masuk ke dashboard sesuai akun Anda" FontSize="11" Foreground="#64748B" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <Separator Background="#334155" Margin="0,4"/>
+
+                <!-- Username -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Username" FontSize="12" FontWeight="SemiBold" Foreground="#E2E8F0"/>
+                    <TextBox x:Name="TxtUsername" PlaceholderText="Masukkan username..." Height="40" Background="#0F172A" Foreground="White" BorderBrush="#334155" CornerRadius="6" Padding="10,0"/>
+                </StackPanel>
+
+                <!-- Password -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Password" FontSize="12" FontWeight="SemiBold" Foreground="#E2E8F0"/>
+                    <TextBox x:Name="TxtPassword" PlaceholderText="Masukkan password..." PasswordChar="•" Height="40" Background="#0F172A" Foreground="White" BorderBrush="#334155" CornerRadius="6" Padding="10,0"/>
+                </StackPanel>
+
+                <!-- Error Notification -->
+                <Border x:Name="BorderError" Background="#450A0A" BorderBrush="#EF4444" BorderThickness="1" CornerRadius="6" Padding="10" IsVisible="False">
+                    <TextBlock x:Name="TxtError" Text="" Foreground="#FCA5A5" FontSize="12" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                </Border>
+
+                <!-- Login Button -->
+                <Button Content="MASUK KE SISTEM" 
+                        Click="BtnLogin_Click" 
+                        Background="#2563EB" 
+                        Foreground="White" 
+                        FontWeight="Bold" 
+                        FontSize="13"
+                        HorizontalAlignment="Stretch" 
+                        HorizontalContentAlignment="Center"
+                        Height="44"
+                        CornerRadius="6"
+                        Margin="0,4,0,0"/>
+
+                <!-- Quick Info for Testing -->
+                <Border Background="#0F172A" CornerRadius="6" Padding="12" Margin="0,8,0,0" BorderBrush="#334155" BorderThickness="1">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="🔑 Akun Bawaan (Default Login):" FontSize="11" FontWeight="SemiBold" Foreground="#38BDF8"/>
+                        <TextBlock Text="• Admin: admin / admin" FontSize="11" Foreground="#94A3B8"/>
+                        <TextBlock Text="• Kasir: kasir / kasir" FontSize="11" Foreground="#94A3B8"/>
+                        <TextBlock Text="• Owner: owner / owner" FontSize="11" Foreground="#94A3B8"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
